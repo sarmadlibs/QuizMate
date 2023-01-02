@@ -16,23 +16,27 @@ function StudyCards() {
     event.preventDefault();
 
     /**
-     *! Split the input text into an array of lines
-     *! and create an array of study cards from the input lines
+     *! Split the input text into an array of lines,
+     *! Filter out empty lines from the input lines,
+     *! Create array of study cards from the input lines
      **/
     const inputLines = input.split("\n");
 
-    const newCards = inputLines.map((line, index) => {
-      if (index === inputLines.length - 1) {
-        return null;
+    const filteredInputLines = inputLines.filter((line) => line !== "");
+
+    const newCards = filteredInputLines.reduce((acc, line, index) => {
+      // If the current index is even, add a new study card to the array
+      if (index % 2 === 0) {
+        acc.push({
+          question: line,
+          answer: filteredInputLines[index + 1],
+        });
       }
-      return {
-        question: line,
-        answer: inputLines[index + 1],
-      };
-    });
+      return acc;
+    }, []);
 
     //! Update the "cards" state with the new array of study cards
-    setCards(newCards.filter((card) => card !== null));
+    setCards(newCards);
   };
 
   return (
