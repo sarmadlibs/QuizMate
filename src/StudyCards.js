@@ -22,6 +22,9 @@ function StudyCards() {
     const inputLines = input.split("\n");
 
     const newCards = inputLines.map((line, index) => {
+      if (index === inputLines.length - 1) {
+        return null;
+      }
       return {
         question: line,
         answer: inputLines[index + 1],
@@ -29,7 +32,7 @@ function StudyCards() {
     });
 
     //! Update the "cards" state with the new array of study cards
-    setCards(newCards);
+    setCards(newCards.filter((card) => card !== null));
   };
 
   return (
