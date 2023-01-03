@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./StudyCards.css";
+import { BsTrash } from "react-icons/bs";
+import { FiEdit2 } from "react-icons/fi";
 
 function StudyCards() {
   const [input, setInput] = useState("");
@@ -136,6 +138,20 @@ function StudyCards() {
     });
   };
 
+  const handleEditCard = (card) => {
+    // Show a form to edit the question and answer of the card
+    const newQuestion = prompt("Enter the new question:");
+    const newAnswer = prompt("Enter the new answer:");
+
+    // Update the card with the new question and answer
+    const newCards = [...cards];
+    const cardIndex = newCards.indexOf(card);
+    newCards[cardIndex] = { ...card, question: newQuestion, answer: newAnswer };
+
+    // Update the state with the new array of cards
+    setCards(newCards);
+  };
+
   return (
     <div className="App">
       <form onSubmit={handleInputSubmit}>
@@ -174,12 +190,15 @@ Paris`}
         <div className="carousel-inner">
           {cards.map((card, index) => (
             <div>
-              <button
+              <div className="edit-button" onClick={() => handleEditCard(card)}>
+                <FiEdit2 className="pencil" size="1.3rem" />
+              </div>
+              <div
                 className="delete-button"
                 onClick={() => handleFlipCard(card, true)}
               >
-                Delete
-              </button>
+                <BsTrash className="trash" size="1.3rem" />
+              </div>
               <div
                 key={index}
                 className={`card ${card.flipped ? "flipped" : ""}`}
