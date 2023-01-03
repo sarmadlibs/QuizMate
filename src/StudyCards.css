@@ -5,7 +5,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 4vh;
+  margin-top: 3vh;
 }
 
 form {
@@ -37,7 +37,7 @@ textarea {
 
 button {
   margin-top: 1.5vh;
-  margin-bottom: 2.5vh;
+  margin-bottom: 3vh;
   box-shadow: -6px 8px;
   background-color: #001628;
   border: 3px solid;
@@ -134,12 +134,15 @@ button:active {
   align-items: center;
   width: 100%;
   height: 100%;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scroll-behavior: smooth;
 }
 
 .carousel-nav {
   position: absolute;
   bottom: 0;
-  margin-bottom: -0.25vh;
+  margin-bottom: -0.8vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,7 +156,6 @@ button:active {
   height: 8vh;
 }
 .carousel-button2 {
-  margin-right: 40px;
   width: 6vw;
   height: 8vh;
 }

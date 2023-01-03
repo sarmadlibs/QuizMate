@@ -6,6 +6,26 @@ function StudyCards() {
   const [cards, setCards] = useState([]);
   const [questionInput, setQuestionInput] = useState("");
   const [answerInput, setAnswerInput] = useState("");
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+  const [scrollStart, setScrollStart] = useState(0);
+
+  const handlePointerDown = (event) => {
+    setIsDragging(true);
+    setDragStart(event.clientX);
+    setScrollStart(document.querySelector(".carousel-inner").scrollLeft);
+  };
+
+  const handlePointerMove = (event) => {
+    if (isDragging) {
+      document.querySelector(".carousel-inner").scrollLeft =
+        scrollStart - (event.clientX - dragStart);
+    }
+  };
+
+  const handlePointerUp = (event) => {
+    setIsDragging(false);
+  };
 
   const handleInputChange = (event) => {
     setInput(event.target.value);
@@ -62,6 +82,8 @@ function StudyCards() {
   const handleFlipCard = (card) => {
     const cardIndex = cards.indexOf(card);
 
+    setCurrentCardIndex(cardIndex);
+
     // Create a new array of cards with the "flipped" class added to the card
     const newCards = [...cards];
     newCards[cardIndex] = { ...card, flipped: !card.flipped };
@@ -74,10 +96,18 @@ function StudyCards() {
 
   const handleMovePrevious = () => {
     setCurrentCardIndex((currentCardIndex + cards.length - 1) % cards.length);
+    document.querySelector(".carousel-inner").scrollBy({
+      left: -document.querySelector(".card").offsetWidth,
+      behavior: "smooth",
+    });
   };
 
   const handleMoveNext = () => {
     setCurrentCardIndex((currentCardIndex + 1) % cards.length);
+    document.querySelector(".carousel-inner").scrollBy({
+      left: document.querySelector(".card").offsetWidth,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -105,7 +135,12 @@ function StudyCards() {
         />
         <button type="submit">Add card</button>
       </form>
-      <div className="carousel">
+      <div
+        className="carousel"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+      >
         <div className="carousel-inner">
           {cards.map((card, index) => (
             <div
