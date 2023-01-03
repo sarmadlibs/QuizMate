@@ -139,16 +139,20 @@ function StudyCards() {
   };
 
   const handleEditCard = (card) => {
-    // Show a form to edit the question and answer of the card
-    const newQuestion = prompt("Enter the new question:");
-    const newAnswer = prompt("Enter the new answer:");
+    const newQuestion = prompt("Enter new question:", card.question);
+    if (!newQuestion) return; // Return early if the user cancels the prompt
+
+    const newAnswer = prompt("Enter new answer:", card.answer);
+    if (!newAnswer) return; // Return early if the user cancels the prompt
 
     // Update the card with the new question and answer
     const newCards = [...cards];
     const cardIndex = newCards.indexOf(card);
-    newCards[cardIndex] = { ...card, question: newQuestion, answer: newAnswer };
-
-    // Update the state with the new array of cards
+    newCards[cardIndex] = {
+      ...card,
+      question: newQuestion,
+      answer: newAnswer,
+    };
     setCards(newCards);
   };
 
@@ -157,11 +161,8 @@ function StudyCards() {
       <form onSubmit={handleInputSubmit}>
         <textarea
           value={input}
-          placeholder={`Enter a question and answer on each line to get started.
-For example:
-
-What is the capital of France?
-Paris`}
+          placeholder={`Enter a question and answer on each line to get started. For example:\n
+What is the capital of France?\nParis`}
           onChange={handleInputChange}
         />
         <button type="submit">Create cards</button>
