@@ -1,15 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./StudyCards.css";
 
 function StudyCards() {
   const [input, setInput] = useState("");
-  const [cards, setCards] = useState([]);
+  // const [cards, setCards] = useState([]);
   const [questionInput, setQuestionInput] = useState("");
   const [answerInput, setAnswerInput] = useState("");
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState(0);
   const [scrollStart, setScrollStart] = useState(0);
 
+  const saveCardsToLocalStorage = (cards) => {
+    localStorage.setItem("cards", JSON.stringify(cards));
+  };
+
+  const loadCardsFromLocalStorage = () => {
+    return JSON.parse(localStorage.getItem("cards")) || [];
+  };
+
+  const [cards, setCards] = useState(loadCardsFromLocalStorage());
+
+  // ...
+
+  // Save the cards to local storage whenever the "cards" state changes
+  useEffect(() => {
+    saveCardsToLocalStorage(cards);
+  }, [cards]);
   const handlePointerDown = (event) => {
     setIsDragging(true);
     setDragStart(event.clientX);
@@ -79,17 +95,26 @@ function StudyCards() {
     setAnswerInput("");
   };
 
-  const handleFlipCard = (card) => {
+  const handleFlipCard = (card, isDelete) => {
     const cardIndex = cards.indexOf(card);
 
-    setCurrentCardIndex(cardIndex);
+    if (isDelete) {
+      // Remove the card from the array
+      const newCards = [...cards];
+      newCards.splice(cardIndex, 1);
 
-    // Create a new array of cards with the "flipped" class added to the card
-    const newCards = [...cards];
-    newCards[cardIndex] = { ...card, flipped: !card.flipped };
+      // Update the state with the new array of cards
+      setCards(newCards);
+    } else {
+      setCurrentCardIndex(cardIndex);
 
-    // Update the "cards" state with the new array of cards
-    setCards(newCards);
+      // Create a new array of cards with the "flipped" class added to the card
+      const newCards = [...cards];
+      newCards[cardIndex] = { ...card, flipped: !card.flipped };
+
+      // Update the "cards" state with the new array of cards
+      setCards(newCards);
+    }
   };
 
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -110,12 +135,17 @@ function StudyCards() {
     });
   };
 
+  const handleDeleteCard = (cardToDelete) => {
+    const newCards = cards.filter((card) => card !== cardToDelete);
+    setCards(newCards);
+  };
+
   return (
     <div className="App">
       <form onSubmit={handleInputSubmit}>
         <textarea
           value={input}
-          placeholder="Enter some text to get started..."
+          placeholder="Enter a question followed by an answer on the following line to get started..."
           onChange={handleInputChange}
         />
         <button type="submit">Create cards</button>
@@ -143,13 +173,21 @@ function StudyCards() {
       >
         <div className="carousel-inner">
           {cards.map((card, index) => (
-            <div
-              key={index}
-              className={`card ${card.flipped ? "flipped" : ""}`}
-              onClick={() => handleFlipCard(card)}
-            >
-              <div className="card-front">{card.question}</div>
-              <div className="card-back">{card.answer}</div>
+            <div>
+              <div
+                key={index}
+                className={`card ${card.flipped ? "flipped" : ""}`}
+                onClick={() => handleFlipCard(card, true)}
+              >
+                <div className="card-front">{card.question}</div>
+                <div className="card-back">{card.answer}</div>
+                <button
+                  className="deleteButton"
+                  onClick={() => handleDeleteCard(card)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>
