@@ -1,15 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./StudyCards.css";
 
 function StudyCards() {
   const [input, setInput] = useState("");
-  const [cards, setCards] = useState([]);
+  // const [cards, setCards] = useState([]);
   const [questionInput, setQuestionInput] = useState("");
   const [answerInput, setAnswerInput] = useState("");
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState(0);
   const [scrollStart, setScrollStart] = useState(0);
 
+  const saveCardsToLocalStorage = (cards) => {
+    localStorage.setItem("cards", JSON.stringify(cards));
+  };
+
+  const loadCardsFromLocalStorage = () => {
+    return JSON.parse(localStorage.getItem("cards")) || [];
+  };
+
+  const [cards, setCards] = useState(loadCardsFromLocalStorage());
+
+  // ...
+
+  // Save the cards to local storage whenever the "cards" state changes
+  useEffect(() => {
+    saveCardsToLocalStorage(cards);
+  }, [cards]);
   const handlePointerDown = (event) => {
     setIsDragging(true);
     setDragStart(event.clientX);
@@ -79,9 +95,19 @@ function StudyCards() {
     setAnswerInput("");
   };
 
-  const handleFlipCard = (card) => {
-    const cardIndex = cards.indexOf(card);
+  const handleFlipCard = (card, isDelete) => {
+    if (isDelete) {
+      // Remove the card from the array
+      const newCards = [...cards];
+      const cardIndex = newCards.indexOf(card);
+      newCards.splice(cardIndex, 1);
 
+      // Update the state with the new array of cards
+      setCards(newCards);
+      return; // Return early
+    }
+    // Flip the card
+    const cardIndex = cards.indexOf(card);
     setCurrentCardIndex(cardIndex);
 
     // Create a new array of cards with the "flipped" class added to the card
@@ -115,7 +141,11 @@ function StudyCards() {
       <form onSubmit={handleInputSubmit}>
         <textarea
           value={input}
-          placeholder="Enter some text to get started..."
+          placeholder={`Enter a question and answer on each line to get started.
+For example:
+
+What is the capital of France?
+Paris`}
           onChange={handleInputChange}
         />
         <button type="submit">Create cards</button>
@@ -143,13 +173,25 @@ function StudyCards() {
       >
         <div className="carousel-inner">
           {cards.map((card, index) => (
-            <div
-              key={index}
-              className={`card ${card.flipped ? "flipped" : ""}`}
-              onClick={() => handleFlipCard(card)}
-            >
-              <div className="card-front">{card.question}</div>
-              <div className="card-back">{card.answer}</div>
+            <div>
+              <button
+                className="delete-button"
+                onClick={() => handleFlipCard(card, true)}
+              >
+                Delete
+              </button>
+              <div
+                key={index}
+                className={`card ${card.flipped ? "flipped" : ""}`}
+                onClick={() => handleFlipCard(card)}
+              >
+                <div className="card-front">
+                  <div style={{ whiteSpace: "pre-wrap" }}>{card.question}</div>
+                </div>
+                <div className="card-back">
+                  <div style={{ whiteSpace: "pre-wrap" }}>{card.answer}</div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
