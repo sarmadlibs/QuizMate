@@ -96,25 +96,26 @@ function StudyCards() {
   };
 
   const handleFlipCard = (card, isDelete) => {
-    const cardIndex = cards.indexOf(card);
-
     if (isDelete) {
       // Remove the card from the array
       const newCards = [...cards];
+      const cardIndex = newCards.indexOf(card);
       newCards.splice(cardIndex, 1);
 
       // Update the state with the new array of cards
       setCards(newCards);
-    } else {
-      setCurrentCardIndex(cardIndex);
-
-      // Create a new array of cards with the "flipped" class added to the card
-      const newCards = [...cards];
-      newCards[cardIndex] = { ...card, flipped: !card.flipped };
-
-      // Update the "cards" state with the new array of cards
-      setCards(newCards);
+      return; // Return early
     }
+    // Flip the card
+    const cardIndex = cards.indexOf(card);
+    setCurrentCardIndex(cardIndex);
+
+    // Create a new array of cards with the "flipped" class added to the card
+    const newCards = [...cards];
+    newCards[cardIndex] = { ...card, flipped: !card.flipped };
+
+    // Update the "cards" state with the new array of cards
+    setCards(newCards);
   };
 
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
@@ -135,17 +136,16 @@ function StudyCards() {
     });
   };
 
-  const handleDeleteCard = (cardToDelete) => {
-    const newCards = cards.filter((card) => card !== cardToDelete);
-    setCards(newCards);
-  };
-
   return (
     <div className="App">
       <form onSubmit={handleInputSubmit}>
         <textarea
           value={input}
-          placeholder="Enter a question followed by an answer on the following line to get started..."
+          placeholder={`Enter a question and answer on each line to get started.
+For example:
+
+What is the capital of France?
+Paris`}
           onChange={handleInputChange}
         />
         <button type="submit">Create cards</button>
@@ -174,19 +174,23 @@ function StudyCards() {
         <div className="carousel-inner">
           {cards.map((card, index) => (
             <div>
+              <button
+                className="delete-button"
+                onClick={() => handleFlipCard(card, true)}
+              >
+                Delete
+              </button>
               <div
                 key={index}
                 className={`card ${card.flipped ? "flipped" : ""}`}
-                onClick={() => handleFlipCard(card, true)}
+                onClick={() => handleFlipCard(card)}
               >
-                <div className="card-front">{card.question}</div>
-                <div className="card-back">{card.answer}</div>
-                <button
-                  className="deleteButton"
-                  onClick={() => handleDeleteCard(card)}
-                >
-                  Delete
-                </button>
+                <div className="card-front">
+                  <div style={{ whiteSpace: "pre-wrap" }}>{card.question}</div>
+                </div>
+                <div className="card-back">
+                  <div style={{ whiteSpace: "pre-wrap" }}>{card.answer}</div>
+                </div>
               </div>
             </div>
           ))}
