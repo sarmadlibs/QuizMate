@@ -204,7 +204,7 @@ button:active {
   background-color: white;
   height: 100%;
   position: absolute;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-radius: 20px;
   backface-visibility: hidden;
 }
@@ -216,7 +216,7 @@ button:active {
   height: 100%;
   backface-visibility: hidden;
   position: absolute;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-radius: 20px;
 }
 
