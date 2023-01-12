@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./StudyCards.css";
+import "../StudyCards.css";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit2 } from "react-icons/fi";
 
