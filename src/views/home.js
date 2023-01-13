@@ -6,14 +6,15 @@ export function Homepage(props) {
     <div>
       <div className={homeCss.welcomeContainer}>
         <div className={homeCss.title}>
-          <div>Welcome to Prep Pal!</div>
+          <div>Welcome to Prep Pal</div>
         </div>
         <div className={homeCss.welcomeMessage}>
           Use our study card generator to easily create personalized flashcards
-          and achieve academic success. To get started, input your desired text
-          and let our system do the rest. Join the thousands of students who
-          have transformed their study habits and reached their goals with Prep
-          Pal. Let's begin your journey to success today!
+          and achieve academic success. Join the thousands of students who have
+          transformed their study habits and reached their goals with Prep Pal.
+        </div>
+        <div className={homeCss.beginJourney}>
+          Let's begin your journey to success today!
         </div>
       </div>
       <div className={homeCss.ellipseContainer}>

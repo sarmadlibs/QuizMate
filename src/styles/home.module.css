@@ -69,20 +69,68 @@ body {
   left: 0;
   margin-left: 5vw;
   margin-top: 5vh;
-  white-space: pre-line;
-  width: 55vw;
+  max-width: 65vw;
 }
 .title {
   color: white;
-  font-family: "Open Sans";
-  font-size: 3.5rem;
+  font-family: "Major Mono Display";
+  font-size: 4rem;
 }
 .welcomeMessage {
   margin-top: 1.8vh;
   color: white;
-  font-family: "Open Sans";
-  font-size: 1.2rem;
+  font-family: "Quicksand";
+  font-size: 1.3rem;
   opacity: 0.55;
+}
+
+.beginJourney {
+  /* !------ Different Gradient Pattern Choices ------! */
+  /*? Red + Blue gradient */
+  /* background-image: linear-gradient(90deg, #c0392b, #8e44ad); */
+
+  /*? Blue Skies gradient */
+  /* background-image: linear-gradient(90deg, #56ccf2, #2f80ed); */
+
+  /*? Crystal Clear gradient */
+  /* background-image: linear-gradient(90deg, #159957, #1cb5e0); */
+
+  /*? Celestial gradient */
+  /* background-image: linear-gradient(90deg, #c33764, #8e44ad); */
+
+  /*? Pacific Dream gradient */
+  /* background-image: linear-gradient(90deg, #34e89e, #0f3443); */
+
+  /*? Venice gradient */
+  /* background-image: linear-gradient(90deg, #6190e8, #a7bfe8); */
+
+  /*? Very BLue gradient */
+  /* background-image: linear-gradient(90deg, #0575e6, #021b79); */
+
+  /*? Blue Lagoon gradient */
+  /* background-image: linear-gradient(90deg, #43c6ac, #191654); */
+
+  /*? Honey Dew gradient */
+  /* background-image: linear-gradient(90deg, #43c6ac, #f8ffae); */
+
+  /*? Jodhpur gradient */
+  /* background-image: linear-gradient(90deg, #9cecfb, #65c7f7, #0052d4); */
+
+  /*? Mild (green?) gradient */
+  /* background-image: linear-gradient(90deg, #67b26f, #4ca2cd); */
+
+  /*? Ibiza Sunset gradient */
+  /* background-image: linear-gradient(90deg, #ee0979, #ff6a00); */
+
+  /*? Radar gradient */
+  background-image: linear-gradient(90deg, #a770ef, #cf8bf3, #fdb99b);
+
+  background-clip: text;
+  color: transparent;
+  font-family: "Quicksand";
+  font-size: 1.3rem;
+  margin-top: 2vh;
+  max-width: 30vw;
 }
 
 /*! -------------------- Ellipse -------------------- */
@@ -106,18 +154,13 @@ body {
   );
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   transform: rotate(163.6deg);
-  /* width: 494.83px;
-  min-width: 190px;
-  height: 512.23px;
-  min-height: 200px;
-  border-radius: 50%; */
   width: 32vw;
   height: 60%;
   min-width: 100px;
   min-height: 200px;
   border-radius: 50%;
   margin-bottom: -80px;
-  cursor: pointer;
+  /* cursor: pointer; */
   /*? Shadow Addition to Ellipse */
   /* box-shadow: 30px -35px 50px -10px rgba(255, 255, 255, 0.3); */
 }
