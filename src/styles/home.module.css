@@ -1,0 +1,106 @@
+/*! -------------------- Background Gradient -------------------- */
+
+:root {
+  --gradient-start: #5eaaaf;
+  --gradient-middle: #2f2e6c;
+  --gradient-end: #251f3e;
+}
+
+body {
+  background: -webkit-linear-gradient(
+    300.74deg,
+    var(--gradient-start) -10%,
+    var(--gradient-middle) 49%,
+    var(--gradient-end) 85.61%
+  );
+  background: -o-linear-gradient(
+    300.74deg,
+    var(--gradient-start) -10%,
+    var(--gradient-middle) 49%,
+    var(--gradient-end) 85.61%
+  );
+  background: -moz-linear-gradient(
+    300.74deg,
+    var(--gradient-start) -10%,
+    var(--gradient-middle) 49%,
+    var(--gradient-end) 8-15.61%
+  );
+  background: linear-gradient(
+    300.74deg,
+    var(--gradient-start) -10%,
+    var(--gradient-middle) 49%,
+    var(--gradient-end) 85.61%
+  );
+
+  background-attachment: fixed;
+}
+
+/*! -------------------- Ellipse -------------------- */
+
+.ellipseContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  height: 100%;
+  position: fixed;
+  margin-left: 18vw;
+}
+
+.svgEllipse {
+  background-image: url("../assets/img/Ellipse.svg");
+  background-size: cover;
+  background: linear-gradient(
+    250.38deg,
+    rgba(247, 247, 249, 0) 47.02%,
+    rgba(224, 230, 243, 0.5) 142.05%
+  );
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  transform: rotate(163.6deg);
+  /* width: 494.83px;
+  min-width: 190px;
+  height: 512.23px;
+  min-height: 200px;
+  border-radius: 50%; */
+  width: 32vw;
+  height: 62%;
+  min-width: 190px;
+  min-height: 200px;
+  border-radius: 50%;
+  margin-bottom: -80px;
+}
+
+/*! -------------------- Constellations -------------------- */
+.constellationContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  margin-right: 12vw;
+  margin-top: 10vh;
+}
+
+.svgConstellation {
+  background-image: url("../assets/img/constellation.svg");
+  background-size: cover;
+  width: 13vw;
+  height: 30%;
+  min-width: 100px;
+  min-height: 200px;
+  border-radius: 50%;
+}
+
+/*! -------------------- Responsiveness -------------------- */
+
+@media screen and (max-width: 50px) {
+  :root {
+    --gradient-start: #f08080;
+    --gradient-middle: #3cb371;
+    --gradient-end: #f08080;
+  }
+  .svgEllipse {
+    width: 25%;
+    height: 25%;
+  }
+}
