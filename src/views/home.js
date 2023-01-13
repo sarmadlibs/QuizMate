@@ -10,6 +10,10 @@ export function Homepage(props) {
       <div className={homeCss.constellationContainer}>
         <div className={homeCss.svgConstellation}></div>
       </div>
+      <div className={homeCss.entireConstellationContainer}>
+        <div className={homeCss.svgEntireConstellation}></div>
+        <div className={homeCss.svgEntireConstellation2}></div>
+      </div>
     </div>
   );
 }

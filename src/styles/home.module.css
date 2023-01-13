@@ -62,11 +62,13 @@ body {
   min-height: 200px;
   border-radius: 50%; */
   width: 32vw;
-  height: 62%;
-  min-width: 190px;
+  height: 60%;
+  min-width: 100px;
   min-height: 200px;
   border-radius: 50%;
   margin-bottom: -80px;
+  /*? Shadow Addition to Ellipse */
+  /* box-shadow: 30px -35px 50px -10px rgba(255, 255, 255, 0.3); */
 }
 
 /*! -------------------- Constellations -------------------- */
@@ -85,12 +87,41 @@ body {
   background-image: url("../assets/img/constellation.svg");
   background-size: cover;
   width: 13vw;
-  height: 30%;
-  min-width: 100px;
-  min-height: 200px;
-  border-radius: 50%;
+  height: 25%;
+  min-width: 220px;
+  min-height: 300px;
+}
+/*! -------------------- Entire Constellation -------------------- */
+.entireConstellationContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  margin-right: 8.4vw;
+  margin-top: 4.7vh;
+  /* padding: 30px; */
 }
 
+.svgEntireConstellation {
+  background-image: url("../assets/img/entireConstellation.svg");
+  background-size: cover;
+  width: 25vw;
+  height: 60%;
+  min-width: 220px;
+  min-height: 300px;
+  margin-top: 10px;
+}
+.svgEntireConstellation2 {
+  background-image: url("../assets/img/entireConstellation.svg");
+  background-size: cover;
+  width: 18vw;
+  height: 30%;
+  min-width: 220px;
+  min-height: 300px;
+  margin-top: 10px;
+}
 /*! -------------------- Responsiveness -------------------- */
 
 @media screen and (max-width: 50px) {
@@ -100,6 +131,10 @@ body {
     --gradient-end: #f08080;
   }
   .svgEllipse {
+    width: 25%;
+    height: 25%;
+  }
+  .svgConstellation {
     width: 25%;
     height: 25%;
   }
