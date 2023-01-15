@@ -56,7 +56,7 @@ export function Homepage(props) {
 
     // Animate the color of each span element
     const numChars = chars.length;
-    const duration = 2000; // 3 seconds
+    const duration = 1800; // 3 seconds
     const delay = duration / numChars; // delay between characters
 
     anime({
