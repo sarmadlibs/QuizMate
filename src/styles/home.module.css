@@ -92,10 +92,10 @@ body {
 
 .welcomeMessage {
   margin-top: 4vh;
-  color: white;
+  color: #5eaaaf;
   font-family: "Quicksand";
   font-size: 1.3rem;
-  opacity: 0.55;
+  opacity: 0.75;
   width: 63vw;
 }
 

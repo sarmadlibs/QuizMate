@@ -9,6 +9,7 @@ import starFormation from "../assets/img/star-formation.json";
 
 export function Homepage(props) {
   const titleRef = useRef(null);
+  const messageRef = useRef(null);
 
   useEffect(() => {
     // Get the text and split it into individual characters
@@ -42,6 +43,43 @@ export function Homepage(props) {
     });
   }, []);
 
+  useEffect(() => {
+    // Get the text and split it into individual characters
+    const text = "Let's begin your journey to success today!";
+    const chars = text.split("");
+
+    // Use the ref to access the DOM element
+    const $text = messageRef.current;
+
+    // Add a span element around each character
+    $text.innerHTML = chars.map((c, i) => `<span>${c}</span>`).join("");
+
+    // Animate the color of each span element
+    const numChars = chars.length;
+    const duration = 2000; // 3 seconds
+    const delay = duration / numChars; // delay between characters
+
+    anime({
+      targets: $text.querySelectorAll("span"),
+      color: [
+        { value: "#191654" },
+        { value: "#43c6ac" },
+        { value: "#FFFFFF" },
+        // { value: "#FFFFFF" },
+        // { value: "#FFFFFF" },
+        { value: "#fdb99b" },
+        { value: "#cf8bf3" },
+        { value: "#a770ef" },
+      ],
+      duration: duration,
+      delay: anime.stagger(delay),
+      easing: "linear",
+      complete: function (anim) {
+        anim.restart();
+      },
+    });
+  }, []);
+
   return (
     <div>
       <div className={homeCss.welcomeContainer}>
@@ -67,7 +105,7 @@ export function Homepage(props) {
           and achieve academic success. Join the thousands of students who have
           transformed their study habits and reached their goals with Quizmate!
         </div>
-        <div className={homeCss.beginJourney}>
+        <div className={homeCss.beginJourney} ref={messageRef}>
           Let's begin your journey to success today!
         </div>
       </div>
