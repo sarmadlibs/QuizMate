@@ -1,21 +1,43 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Lottie from "react-lottie";
+import anime from "animejs/lib/anime.es.js";
 import homeCss from "../styles/home.module.css";
 
 // import { motion } from "framer-motion";
-import shootingStar from "../assets/img/shooting-stars.json";
+// import shootingStar from "../assets/img/shooting-stars.json";
 import starFormation from "../assets/img/star-formation.json";
 
 export function Homepage(props) {
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    // Get the text and split it into individual characters
+    const text = "Welcome to quizMAte";
+    const chars = text.split("");
+
+    // Use the ref to access the DOM element
+    const $text = titleRef.current;
+
+    // Add a span element around each character
+    $text.innerHTML = chars.map((c, i) => `<span>${c}</span>`).join("");
+
+    // Animate the color of each span element
+    anime({
+      targets: $text.querySelectorAll("span"),
+      color: [{ value: "#191654" }, { value: "#43c6ac" }],
+      delay: anime.stagger(120),
+      duration: 1500,
+      // loop: true,
+      easing: "linear",
+    });
+  }, []);
+
   return (
     <div>
       <div className={homeCss.welcomeContainer}>
         <div className={homeCss.titleContainer}>
-          <div className={homeCss.title}>
-            {/* <div>Welcome to Prep Pal</div> */}
+          <div className={homeCss.title} ref={titleRef}>
             <div>Welcome to quizMAte</div>
-            {/* <div>Welcome to studyMAte</div> */}
-            {/* <div>Welcome to studypal</div> */}
           </div>
           <div className={homeCss.starFormation}>
             <Lottie options={{ animationData: starFormation }} />
