@@ -69,19 +69,38 @@ body {
   left: 0;
   margin-left: 5vw;
   margin-top: 5vh;
-  max-width: 65vw;
+  max-width: 90vw;
+}
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 }
 .title {
   color: white;
   font-family: "Major Mono Display";
   font-size: 4rem;
 }
+
 .welcomeMessage {
-  margin-top: 1.8vh;
+  margin-top: 5vh;
   color: white;
   font-family: "Quicksand";
   font-size: 1.3rem;
   opacity: 0.55;
+  width: 64vw;
+}
+
+/*! -------------------- Lottie Files -------------------- */
+
+.starFormation {
+  position: absolute;
+  right: 0;
+  margin-right: 9.8vw;
+  height: 12vh;
+  margin-bottom: 1vh;
+  z-index: 1;
 }
 
 .beginJourney {
@@ -139,9 +158,11 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  height: 100%;
+  bottom: 0;
   position: fixed;
   margin-left: 18vw;
+  width: 33vw;
+  height: 63vh;
 }
 
 .svgEllipse {
@@ -154,15 +175,12 @@ body {
   );
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   transform: rotate(163.6deg);
-  width: 32vw;
-  height: 60%;
-  min-width: 100px;
-  min-height: 200px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   margin-bottom: -80px;
-  /* cursor: pointer; */
   /*? Shadow Addition to Ellipse */
-  /* box-shadow: 30px -35px 50px -10px rgba(255, 255, 255, 0.3); */
+  /* box-shadow: 20px -15px 40px -10px rgba(255, 255, 255, 0.3); */
 }
 
 /*! -------------------- Constellations -------------------- */
@@ -173,8 +191,8 @@ body {
   height: 100%;
   position: fixed;
   right: 0;
-  margin-right: 12vw;
-  margin-top: 10vh;
+  margin-right: 11.8vw;
+  margin-top: 19vh;
 }
 
 .svgConstellation {
@@ -195,7 +213,6 @@ body {
   right: 0;
   margin-right: 8.4vw;
   margin-top: 4.7vh;
-  /* padding: 30px; */
 }
 
 .svgEntireConstellation {
@@ -218,18 +235,11 @@ body {
 }
 /*! -------------------- Responsiveness -------------------- */
 
-@media screen and (max-width: 50px) {
-  :root {
-    --gradient-start: #f08080;
-    --gradient-middle: #3cb371;
-    --gradient-end: #f08080;
-  }
-  .svgEllipse {
-    width: 25%;
-    height: 25%;
-  }
-  .svgConstellation {
-    width: 25%;
-    height: 25%;
+@media (max-width: 1440px) {
+  .starFormation {
+    position: absolute;
+    width: 20vw;
+    height: 14vh;
+    left: 92%;
   }
 }
