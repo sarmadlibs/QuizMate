@@ -22,12 +22,22 @@ export function Homepage(props) {
     $text.innerHTML = chars.map((c, i) => `<span>${c}</span>`).join("");
 
     // Animate the color of each span element
+    const numChars = chars.length;
+    const duration = 1600; // 3 seconds
+    const delay = duration / numChars; // delay between characters
+
     anime({
       targets: $text.querySelectorAll("span"),
-      color: [{ value: "#191654" }, { value: "#43c6ac" }],
-      delay: anime.stagger(120),
-      duration: 1500,
-      // loop: true,
+      color: [
+        { value: "#191654" },
+        { value: "#43c6ac" },
+        { value: "#FFFFFF" },
+        { value: "#FFFFFF" },
+        // { value: "#FFFFFF" },
+        { value: "#43c6ac" },
+      ],
+      duration: duration,
+      delay: anime.stagger(delay),
       easing: "linear",
     });
   }, []);
