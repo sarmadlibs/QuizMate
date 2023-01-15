@@ -12,21 +12,34 @@ export function Homepage(props) {
       <div className={homeCss.welcomeContainer}>
         <div className={homeCss.titleContainer}>
           <div className={homeCss.title}>
-            <div>Welcome to Prep Pal</div>
+            {/* <div>Welcome to Prep Pal</div> */}
+            <div>Welcome to quizMAte</div>
+            {/* <div>Welcome to studyMAte</div> */}
+            {/* <div>Welcome to studypal</div> */}
           </div>
           <div className={homeCss.starFormation}>
             <Lottie options={{ animationData: starFormation }} />
           </div>
+          {/* <div className={homeCss.shootingStar}>
+            <Lottie
+              options={{
+                animationData: shootingStar,
+                loop: true,
+                autoplay: true,
+              }}
+            />
+          </div> */}
         </div>
         <div className={homeCss.welcomeMessage}>
           Use our study card generator to easily create personalized flashcards
           and achieve academic success. Join the thousands of students who have
-          transformed their study habits and reached their goals with Prep Pal.
+          transformed their study habits and reached their goals with Quizmate!
         </div>
         <div className={homeCss.beginJourney}>
           Let's begin your journey to success today!
         </div>
       </div>
+
       <div className={homeCss.ellipseContainer}>
         <svg
           className={homeCss.svgEllipse}

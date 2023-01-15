@@ -1,4 +1,4 @@
-/*! -------------------- Font Imports -------------------- */
+/*! ---------------------------------------- Font Imports ---------------------------------------- */
 /** Google Fonts:
 ** Open Sans, Raleway, Quicksand, JetBrains Mono, Major Mono Display, Maven Pro, Poppins, Roboto, Roboto Mono  
 ** */
@@ -25,7 +25,7 @@
     }
 ** */
 
-/*! -------------------- Background Gradient -------------------- */
+/*! ---------------------------------------- Background Gradient ---------------------------------------- */
 
 :root {
   --gradient-start: #5eaaaf;
@@ -62,13 +62,12 @@ body {
   background-attachment: fixed;
 }
 
-/*! -------------------- Welcome Message -------------------- */
+/*! ---------------------------------------- Welcome Message ---------------------------------------- */
 .welcomeContainer {
   position: fixed;
   top: 0;
   left: 0;
   margin-left: 5vw;
-  margin-top: 5vh;
   max-width: 90vw;
 }
 .titleContainer {
@@ -84,27 +83,29 @@ body {
 }
 
 .welcomeMessage {
-  margin-top: 5vh;
+  margin-top: 4vh;
   color: white;
   font-family: "Quicksand";
   font-size: 1.3rem;
   opacity: 0.55;
-  width: 64vw;
+  width: 63vw;
 }
 
-/*! -------------------- Lottie Files -------------------- */
+/*! ---------------------------------------- Lottie Files ---------------------------------------- */
 
 .starFormation {
-  position: absolute;
-  right: 0;
+  position: relative;
   margin-right: 9.8vw;
   height: 12vh;
   margin-bottom: 1vh;
   z-index: 1;
 }
-
+/* .shootingStar {
+  position: fixed;
+  z-index: -1;
+} */
+/*? ---------------------------------------- Gradient Choices ---------------------------------------- */
 .beginJourney {
-  /* !------ Different Gradient Pattern Choices ------! */
   /*? Red + Blue gradient */
   /* background-image: linear-gradient(90deg, #c0392b, #8e44ad); */
 
@@ -152,7 +153,7 @@ body {
   max-width: 30vw;
 }
 
-/*! -------------------- Ellipse -------------------- */
+/*! ---------------------------------------- Ellipse ---------------------------------------- */
 
 .ellipseContainer {
   display: flex;
@@ -161,8 +162,8 @@ body {
   bottom: 0;
   position: fixed;
   margin-left: 18vw;
-  width: 33vw;
-  height: 63vh;
+  width: 24vw;
+  height: 48vh;
 }
 
 .svgEllipse {
@@ -183,7 +184,7 @@ body {
   /* box-shadow: 20px -15px 40px -10px rgba(255, 255, 255, 0.3); */
 }
 
-/*! -------------------- Constellations -------------------- */
+/*! ---------------------------------------- Constellations ---------------------------------------- */
 .constellationContainer {
   display: flex;
   align-items: flex-start;
@@ -203,7 +204,7 @@ body {
   min-width: 220px;
   min-height: 300px;
 }
-/*! -------------------- Entire Constellation -------------------- */
+/*! ---------------------------------------- Entire Constellation ---------------------------------------- */
 .entireConstellationContainer {
   display: flex;
   flex-direction: column;
@@ -233,13 +234,126 @@ body {
   min-height: 300px;
   margin-top: 10px;
 }
-/*! -------------------- Responsiveness -------------------- */
+/*! ---------------------------------------- Responsiveness ---------------------------------------- */
 
 @media (max-width: 1440px) {
+  /*? ---------------------------------------- Welcome Message ---------------------------------------- */
+  .welcomeContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 5vw;
+    max-width: 90vw;
+    margin-top: 5vh;
+  }
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  .title {
+    color: white;
+    font-family: "Major Mono Display";
+    font-size: 4rem;
+  }
+
+  .welcomeMessage {
+    margin-top: 4vh;
+    color: white;
+    font-family: "Quicksand";
+    font-size: 1.3rem;
+    opacity: 0.55;
+    width: 63vw;
+  }
+
+  /*? ---------------------------------------- Lottie Files ---------------------------------------- */
+
   .starFormation {
     position: absolute;
     width: 20vw;
     height: 14vh;
     left: 92%;
+  }
+  /*? ---------------------------------------- Ellipse ---------------------------------------- */
+
+  .ellipseContainer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    bottom: 0;
+    position: fixed;
+    margin-left: 18vw;
+    width: 28vw;
+    height: 50vh;
+  }
+
+  .svgEllipse {
+    background-image: url("../assets/img/Ellipse.svg");
+    background-size: cover;
+    background: linear-gradient(
+      250.38deg,
+      rgba(247, 247, 249, 0) 47.02%,
+      rgba(224, 230, 243, 0.5) 142.05%
+    );
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    transform: rotate(163.6deg);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    margin-bottom: -80px;
+    /*? Shadow Addition to Ellipse */
+    /* box-shadow: 20px -15px 40px -10px rgba(255, 255, 255, 0.3); */
+  }
+
+  /*? ---------------------------------------- Constellations ---------------------------------------- */
+  .constellationContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    margin-right: 11.8vw;
+    margin-top: 19vh;
+  }
+
+  .svgConstellation {
+    background-image: url("../assets/img/constellation.svg");
+    background-size: cover;
+    width: 13vw;
+    height: 25%;
+    min-width: 220px;
+    min-height: 300px;
+  }
+  /*? ---------------------------------------- Entire Constellation ---------------------------------------- */
+  .entireConstellationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    margin-right: 8.4vw;
+    margin-top: 4.7vh;
+  }
+
+  .svgEntireConstellation {
+    background-image: url("../assets/img/entireConstellation.svg");
+    background-size: cover;
+    width: 25vw;
+    height: 60%;
+    min-width: 220px;
+    min-height: 300px;
+    margin-top: 10px;
+  }
+  .svgEntireConstellation2 {
+    background-image: url("../assets/img/entireConstellation.svg");
+    background-size: cover;
+    width: 18vw;
+    height: 30%;
+    min-width: 220px;
+    min-height: 300px;
+    margin-top: 10px;
   }
 }
