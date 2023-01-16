@@ -4,29 +4,23 @@ import anime from "animejs/lib/anime.es.js";
 import homeCss from "../styles/home.module.css";
 
 // import { motion } from "framer-motion";
-// import shootingStar from "../assets/img/shooting-stars.json";
+import shootingStar from "../assets/img/shooting-stars.json";
 import starFormation from "../assets/img/star-formation.json";
+import astro from "../assets/img/astro.json";
 
 export function Homepage(props) {
   const titleRef = useRef(null);
   const messageRef = useRef(null);
 
   useEffect(() => {
-    // Get the text and split it into individual characters
+    // First animation on titleRef
     const text = "Welcome to quizMAte";
     const chars = text.split("");
-
-    // Use the ref to access the DOM element
     const $text = titleRef.current;
-
-    // Add a span element around each character
     $text.innerHTML = chars.map((c, i) => `<span>${c}</span>`).join("");
-
-    // Animate the color of each span element
     const numChars = chars.length;
-    const duration = 1600; // 3 seconds
-    const delay = duration / numChars; // delay between characters
-
+    const duration = 1600;
+    const delay = duration / numChars;
     anime({
       targets: $text.querySelectorAll("span"),
       color: [
@@ -34,12 +28,40 @@ export function Homepage(props) {
         { value: "#43c6ac" },
         { value: "#FFFFFF" },
         { value: "#FFFFFF" },
-        // { value: "#FFFFFF" },
         { value: "#43c6ac" },
       ],
       duration: duration,
       delay: anime.stagger(delay),
       easing: "linear",
+      complete: function () {
+        // set color for second animation
+        anime.set($text.querySelectorAll("span"), {
+          color: "#43c6ac",
+        });
+        //* Second animation on shineRef
+        anime({
+          targets: $text.querySelectorAll("span"),
+          color: [
+            { value: "#FFFFFF" },
+            // { value: "#FFD700" },
+            { value: "#D7BE69" },
+            { value: "#0D5BE1" },
+          ],
+          duration: 2000,
+          delay: anime.stagger(150),
+          loop: true,
+          easing: "linear",
+          direction: "alternate",
+          loopBegin: function (anim) {
+            anim.began = true;
+          },
+          complete: function (anim) {
+            if (anim.began) {
+              anim.reset();
+            }
+          },
+        });
+      },
     });
   }, []);
 
@@ -56,7 +78,7 @@ export function Homepage(props) {
 
     // Animate the color of each span element
     const numChars = chars.length;
-    const duration = 1800; // 3 seconds
+    const duration = 2000;
     const delay = duration / numChars; // delay between characters
 
     anime({
@@ -90,15 +112,15 @@ export function Homepage(props) {
           <div className={homeCss.starFormation}>
             <Lottie options={{ animationData: starFormation }} />
           </div>
-          {/* <div className={homeCss.shootingStar}>
+          <div className={homeCss.astro}>
             <Lottie
               options={{
-                animationData: shootingStar,
+                animationData: astro,
                 loop: true,
                 autoplay: true,
               }}
             />
-          </div> */}
+          </div>
         </div>
         <div className={homeCss.welcomeMessage}>
           Use our study card generator to easily create personalized flashcards
