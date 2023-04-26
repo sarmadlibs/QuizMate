@@ -121,52 +121,55 @@ body {
   margin-left: 28vw;
 }
 /*? ---------------------------------------- Gradient Choices ---------------------------------------- */
+
 .beginJourney {
-  /*? Red + Blue gradient */
-  /* background-image: linear-gradient(90deg, #c0392b, #8e44ad); */
+  margin-top: 2vh;
+}
 
-  /*? Blue Skies gradient */
-  /* background-image: linear-gradient(90deg, #56ccf2, #2f80ed); */
-
-  /*? Crystal Clear gradient */
-  /* background-image: linear-gradient(90deg, #159957, #1cb5e0); */
-
-  /*? Celestial gradient */
-  /* background-image: linear-gradient(90deg, #c33764, #8e44ad); */
-
-  /*? Pacific Dream gradient */
-  /* background-image: linear-gradient(90deg, #34e89e, #0f3443); */
-
-  /*? Venice gradient */
-  /* background-image: linear-gradient(90deg, #6190e8, #a7bfe8); */
-
-  /*? Very BLue gradient */
-  /* background-image: linear-gradient(90deg, #0575e6, #021b79); */
-
-  /*? Blue Lagoon gradient */
-  /* background-image: linear-gradient(90deg, #43c6ac, #191654); */
-
-  /*? Honey Dew gradient */
-  /* background-image: linear-gradient(90deg, #43c6ac, #f8ffae); */
-
-  /*? Jodhpur gradient */
-  /* background-image: linear-gradient(90deg, #9cecfb, #65c7f7, #0052d4); */
-
-  /*? Mild (green?) gradient */
-  /* background-image: linear-gradient(90deg, #67b26f, #4ca2cd); */
-
-  /*? Ibiza Sunset gradient */
-  /* background-image: linear-gradient(90deg, #ee0979, #ff6a00); */
-
-  /*? Radar gradient */
+.beginJourneyLink {
+  text-decoration: none;
+  position: relative;
+  /* Radar gradient */
   background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
-
   background-clip: text;
   color: transparent;
   font-family: "Quicksand";
   font-size: 1.3rem;
   margin-top: 2vh;
   max-width: 30vw;
+}
+
+.beginJourneyLink::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+  visibility: hidden;
+  transition: visibility 0.25s, transform 0.25s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.beginJourneyLink:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Typewriter effect */
+
+.typewriter {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 3rem;
+  background: linear-gradient(to right, aquamarine, mediumpurple);
+  background-clip: text;
+  color: transparent;
+  margin-top: 6vh;
+  word-wrap: break-word;
+  width: 80%;
 }
 
 /*! ---------------------------------------- Ellipse ---------------------------------------- */
@@ -271,7 +274,7 @@ body {
 
   .title {
     font-family: "Major Mono Display";
-    font-size: 4rem;
+    font-size: 3.8rem;
   }
 
   .title span {
@@ -296,7 +299,8 @@ body {
   .starFormation {
     position: absolute;
     width: 20vw;
-    height: 14vh;
+    height: 12vh;
+    margin-bottom: 1vh;
     left: 92%;
   }
   .astro {
