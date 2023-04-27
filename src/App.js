@@ -1,18 +1,16 @@
-import {BrowserRouter,Route,Routes,Link} from "react-router-dom"
-import { Homepage } from "./views/home";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { LandingPage } from "./views/landing";
+import StudyCards from "./components/StudyCards";
 
 function App() {
-    
-  
-    return (
-      <BrowserRouter>
+  return (
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element ={<Homepage/>}></Route>
-         
-       
+        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/studycards" element={<StudyCards />}></Route>
       </Routes>
-      </BrowserRouter>
-    );
-  }
+    </BrowserRouter>
+  );
+}
 
-  export default App ;
+export default App;

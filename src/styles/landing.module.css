@@ -1,0 +1,393 @@
+/*! ---------------------------------------- Font Imports ---------------------------------------- */
+/** Google Fonts:
+** Open Sans, Raleway, Quicksand, JetBrains Mono, Major Mono Display, Maven Pro, Poppins, Roboto, Roboto Mono  
+** */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Major+Mono+Display&family=Maven+Pro:wght@400;500;600&family=Open+Sans&family=Poppins:wght@200;300;400;600;800&family=Quicksand&family=Raleway&family=Roboto&family=Roboto+Mono:wght@400;500&display=swap");
+
+/** Rems and their corresponding font sizes
+    *? 1rem = 16px
+    *? 2rem = 32px
+    *? 3rem = 48px
+    *? 4rem = 64px
+    *? 5rem = 80px
+    *? 6rem = 96px
+    ** h1 {
+        *? font-size: 2rem;
+    }
+    ** h2 {
+        *? font-size: 1.5rem;
+    }
+    ** body {
+        *? font-size: 1rem;
+    }
+    ** small {
+        *? font-size: 0.8rem;
+    }
+** */
+
+/*! ---------------------------------------- Background Gradient ---------------------------------------- */
+
+:root {
+  --gradient-start: #5eaaaf;
+  --gradient-middle: #2f2e6c;
+  --gradient-end: #251f3e;
+}
+
+body {
+  background: -webkit-linear-gradient(
+    300.74deg,
+    var(--gradient-start) -10%,
+    var(--gradient-middle) 49%,
+    var(--gradient-end) 85.61%
+  );
+  background: -o-linear-gradient(
+    300.74deg,
+    var(--gradient-start) -10%,
+    var(--gradient-middle) 49%,
+    var(--gradient-end) 85.61%
+  );
+  background: -moz-linear-gradient(
+    300.74deg,
+    var(--gradient-start) -10%,
+    var(--gradient-middle) 49%,
+    var(--gradient-end) 8-15.61%
+  );
+  background: linear-gradient(
+    300.74deg,
+    var(--gradient-start) -10%,
+    var(--gradient-middle) 49%,
+    var(--gradient-end) 85.61%
+  );
+
+  background-attachment: fixed;
+}
+
+/*! ---------------------------------------- Welcome Message ---------------------------------------- */
+.welcomeContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 5vw;
+  max-width: 90vw;
+}
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.title {
+  font-family: "Major Mono Display";
+  font-size: 4rem;
+}
+
+.title span {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  color: transparent;
+  display: inline-block;
+}
+
+.welcomeMessage {
+  margin-top: 4vh;
+  color: #5eaaaf;
+  font-family: "Quicksand";
+  font-size: 1.3rem;
+  opacity: 0.75;
+  width: 63vw;
+}
+
+/*! ---------------------------------------- Lottie Files ---------------------------------------- */
+
+.starFormation {
+  position: relative;
+  margin-right: 9.8vw;
+  height: 12vh;
+  margin-bottom: 1vh;
+  z-index: 1;
+}
+/* .shootingStar {
+  position: fixed;
+  z-index: -1;
+} */
+
+.astro {
+  position: fixed;
+  height: 26vh;
+  z-index: -1;
+  margin-top: 125vh;
+  margin-left: 28vw;
+}
+/*? ---------------------------------------- Gradient Choices ---------------------------------------- */
+
+.beginJourney {
+  margin-top: 2vh;
+}
+
+.beginJourneyLink {
+  text-decoration: none;
+  position: relative;
+  background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+  background-clip: text;
+  color: transparent;
+  font-family: "Quicksand";
+  font-size: 1.3rem;
+  margin-top: 2vh;
+  max-width: 30vw;
+}
+
+.beginJourneyLink::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+  visibility: hidden;
+  transition: visibility 0.25s, transform 0.25s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.beginJourneyLink:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Typewriter effect */
+
+.typewriter {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 3rem;
+  background: linear-gradient(to right, aquamarine, mediumpurple);
+  background-clip: text;
+  color: transparent;
+  margin-top: 6vh;
+  word-wrap: break-word;
+  width: 80%;
+}
+
+/*! ---------------------------------------- Ellipse ---------------------------------------- */
+
+.ellipseContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  bottom: 0;
+  position: fixed;
+  margin-left: 18vw;
+  width: 24vw;
+  height: 48vh;
+  z-index: -1;
+}
+
+.svgEllipse {
+  background-image: url("../assets/img/Ellipse.svg");
+  background-size: cover;
+  background: linear-gradient(
+    250.38deg,
+    rgba(247, 247, 249, 0) 47.02%,
+    rgba(224, 230, 243, 0.5) 142.05%
+  );
+  transform: rotate(163.6deg);
+  width: 100%;
+  border-radius: 50%;
+  height: 100%;
+  margin-bottom: -80px;
+  /*? Shadow Addition to Ellipse */
+  /* box-shadow: 20px -15px 40px -10px rgba(255, 255, 255, 0.3); */
+}
+
+/*! ---------------------------------------- Constellations ---------------------------------------- */
+.constellationContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  margin-right: 11.8vw;
+  margin-top: 19vh;
+}
+
+.svgConstellation {
+  background-image: url("../assets/img/constellation.svg");
+  background-size: cover;
+  width: 13vw;
+  height: 25%;
+  min-width: 220px;
+  min-height: 300px;
+}
+/*! ---------------------------------------- Entire Constellation ---------------------------------------- */
+.entireConstellationContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  margin-right: 8.4vw;
+  margin-top: 4.7vh;
+}
+
+.svgEntireConstellation {
+  background-image: url("../assets/img/entireConstellation.svg");
+  background-size: cover;
+  width: 25vw;
+  height: 60%;
+  min-width: 220px;
+  min-height: 300px;
+  margin-top: 10px;
+}
+.svgEntireConstellation2 {
+  background-image: url("../assets/img/entireConstellation.svg");
+  background-size: cover;
+  width: 18vw;
+  height: 30%;
+  min-width: 220px;
+  min-height: 300px;
+  margin-top: 10px;
+}
+/*! ---------------------------------------- Responsiveness ---------------------------------------- */
+
+@media (max-width: 1440px) {
+  /*? ---------------------------------------- Welcome Message ---------------------------------------- */
+  .welcomeContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 5vw;
+    max-width: 90vw;
+    margin-top: 5vh;
+  }
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .title {
+    font-family: "Major Mono Display";
+    font-size: 3.8rem;
+  }
+
+  .title span {
+    position: relative;
+    width: 1em;
+    height: 1em;
+    color: transparent;
+    display: inline-block;
+  }
+
+  .welcomeMessage {
+    margin-top: 4vh;
+    color: white;
+    font-family: "Quicksand";
+    font-size: 1.3rem;
+    opacity: 0.55;
+    width: 63vw;
+  }
+
+  /*? ---------------------------------------- Lottie Files ---------------------------------------- */
+
+  .starFormation {
+    position: absolute;
+    width: 20vw;
+    height: 12vh;
+    margin-bottom: 1vh;
+    left: 92%;
+  }
+  .astro {
+    position: fixed;
+    height: 26vh;
+    z-index: -1;
+    margin-top: 120vh;
+    margin-left: 32vw;
+  }
+  /*? ---------------------------------------- Ellipse ---------------------------------------- */
+
+  .ellipseContainer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    bottom: 0;
+    position: fixed;
+    margin-left: 18vw;
+    width: 28vw;
+    height: 50vh;
+  }
+
+  .svgEllipse {
+    background-image: url("../assets/img/Ellipse.svg");
+    background-size: cover;
+    background: linear-gradient(
+      250.38deg,
+      rgba(247, 247, 249, 0) 47.02%,
+      rgba(224, 230, 243, 0.5) 142.05%
+    );
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    transform: rotate(163.6deg);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    margin-bottom: -80px;
+    /*? Shadow Addition to Ellipse */
+    /* box-shadow: 20px -15px 40px -10px rgba(255, 255, 255, 0.3); */
+  }
+
+  /*? ---------------------------------------- Constellations ---------------------------------------- */
+  .constellationContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    margin-right: 11.8vw;
+    margin-top: 19vh;
+  }
+
+  .svgConstellation {
+    background-image: url("../assets/img/constellation.svg");
+    background-size: cover;
+    width: 13vw;
+    height: 25%;
+    min-width: 220px;
+    min-height: 300px;
+  }
+  /*? ---------------------------------------- Entire Constellation ---------------------------------------- */
+  .entireConstellationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    margin-right: 8.4vw;
+    margin-top: 4.7vh;
+  }
+
+  .svgEntireConstellation {
+    background-image: url("../assets/img/entireConstellation.svg");
+    background-size: cover;
+    width: 25vw;
+    height: 60%;
+    min-width: 220px;
+    min-height: 300px;
+    margin-top: 10px;
+  }
+  .svgEntireConstellation2 {
+    background-image: url("../assets/img/entireConstellation.svg");
+    background-size: cover;
+    width: 18vw;
+    height: 30%;
+    min-width: 220px;
+    min-height: 300px;
+    margin-top: 10px;
+  }
+}
