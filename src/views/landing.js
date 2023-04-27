@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Lottie from "react-lottie";
 import Letterize from "letterizejs";
 import Typewriter from "typewriter-effect/dist/core";
+import { BsArrowRight } from "react-icons/bs";
 
 import anime from "animejs/lib/anime.es.js";
 import landingCss from "../styles/landing.module.css";

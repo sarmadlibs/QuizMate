@@ -129,7 +129,6 @@ body {
 .beginJourneyLink {
   text-decoration: none;
   position: relative;
-  /* Radar gradient */
   background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
   background-clip: text;
   color: transparent;
